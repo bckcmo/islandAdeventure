@@ -27,9 +27,9 @@ int main(void)
 	
 	//Print welcome message
 	std::cout << std::endl;
-	std::cout << "Welcome to Island Adventures, a text based strategy game." << std::endl;
-	std::cout << "You will be challanged to find your way off a remote tropical island " << std::endl;
-	std::cout << "without running out of food or water and without sucumbing to death." << std::endl;
+	std::cout << "Welcome to Island Adventures, a text-based strategy game." << std::endl;
+	std::cout << "You will be challenged to find your way off a remote tropical island " << std::endl;
+	std::cout << "without running out of food or water and without succumbing to death." << std::endl;
 	
 	char menuReturn = menu();
 	

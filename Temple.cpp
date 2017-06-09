@@ -172,6 +172,11 @@ Space* Temple::spaceInfo(Player* player)
 			std::cout << "Nothing left to see here." << std::endl;
 		}
 	}
+	else
+	{
+		player->update();
+		return spaces[2];		
+	}
 	
 	return this;
 }

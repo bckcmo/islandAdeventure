@@ -119,8 +119,8 @@ Space* River::spaceInfo(Player* player)
 		std::cout << std::endl;
 		std::cout << "You are standing at the edge of the cliff." << std::endl;
 		std::cout << "You lose your footing and stumble down off the edge." << std::endl;
-		std::cout << "You fell hunderes of feet and died on impact. Sad!" << std::endl;
-		player->setStrength(0);
+		std::cout << "You fell hundreds of feet and died on impact. Sad!" << std::endl;
+		return nullptr;
 	}
 	else if(move == 'd')
 	{

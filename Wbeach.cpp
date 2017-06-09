@@ -42,8 +42,8 @@ Space* Wbeach:: spaceInfo(Player* player)
 		
 		std::cout << std::endl;
 		std::cout << "To walk to the boat enter 'u' " <<std::endl;
-		std::cout << "To climb on the boudlers on your left enter 'l' " << std::endl;
-		std::cout << "To climb on the boudlers on your right enter 'r' " << std::endl;
+		std::cout << "To climb on the boulders on your left enter 'l' " << std::endl;
+		std::cout << "To climb on the boulders on your right enter 'r' " << std::endl;
 		std::cout << "To walk down the path and back to the temple enter 'd' " << std::endl;
 		move = getChar();
 		moveTry++;
@@ -182,7 +182,7 @@ Space* Wbeach:: spaceInfo(Player* player)
 		else
 		{
 			std::cout << std::endl;
-			std::cout << "There is nothing interesting on the boudlers. You return to the beach." << std::endl;
+			std::cout << "There is nothing interesting on the boulders. You return to the beach." << std::endl;
 		}
 	}
 	else if(move == 'l')
@@ -191,7 +191,6 @@ Space* Wbeach:: spaceInfo(Player* player)
 		std::cout << "These boulders look dangerous and you decide not to climb on them." << std::endl;
 		std::cout << "While walking back to the beach, you trip on a fallen tree and hit your head." << std::endl;
 		std::cout << "You died. You were so close to getting off the island. Darn." << std::endl;
-		player->setStrength(0);
 		return nullptr;
 	}
 	else

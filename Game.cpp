@@ -48,7 +48,7 @@ int Game::play()
 	std::cout << "You are a little thirsity and a little hungry. You also have a backpack." << std::endl;
 	std::cout << "How did you get here? It doesn't really matter... because you ARE here." << std::endl;
 	std::cout << "Your goal now is to make it off the island alive." << std::endl;
-	std::cout << "Don't run out of water. Don't starve. And don't accidently die." << std::endl;
+	std::cout << "Don't run out of water. Don't starve. And don't accidentally die." << std::endl;
 	
 	do
 	{

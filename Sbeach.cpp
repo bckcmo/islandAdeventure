@@ -28,7 +28,7 @@ Space* Sbeach:: spaceInfo(Player* player)
 	std::cout << std::endl;
 	std::cout << "The south beach is warm and dry." << std::endl;
 	std::cout << "From where you are standing, you can see the ocean." << std::endl;
-	std::cout << "On either side of the ocean are large boulders." << std::endl;
+	std::cout << "On either side of the beach are large boulders." << std::endl;
 	std::cout << "North of the beach is a dense forest." << std::endl;
 	std::cout << "You can see a path leading into the forest." << std::endl;
 	int moveTry = 0;
@@ -40,8 +40,8 @@ Space* Sbeach:: spaceInfo(Player* player)
 		}
 		std::cout << std::endl;
 		std::cout << "To walk to the ocean enter 'd' " <<std::endl;
-		std::cout << "To climb on the boudlers on your left enter 'l' " << std::endl;
-		std::cout << "To climb on the boudlers on your right enter 'r' " << std::endl;
+		std::cout << "To climb on the boulders on your left enter 'l' " << std::endl;
+		std::cout << "To climb on the boulders on your right enter 'r' " << std::endl;
 		std::cout << "To walk down the path and into the forest enter 'u' " << std::endl;
 		move = getChar();
 		moveTry++;
@@ -149,7 +149,7 @@ Space* Sbeach:: spaceInfo(Player* player)
 		else
 		{
 			std::cout << std::endl;
-			std::cout << "There is nothing interesting on the boudlers. You return to the beach." << std::endl;
+			std::cout << "There is nothing interesting on the boulders. You return to the beach." << std::endl;
 		}
 	}
 	else if(move == 'l')
@@ -158,7 +158,7 @@ Space* Sbeach:: spaceInfo(Player* player)
 		std::cout << "These boulders are very slippery." << std::endl;
 		std::cout << "You loose your balance and fall. During the fall you hit your head." << std::endl;
 		std::cout << "You died. That's so sad. I'm sorry." << std::endl;
-		player->setStrength(0);
+		return nullptr;
 	}
 	else if(move == 'u')
 	{
