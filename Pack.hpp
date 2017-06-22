@@ -6,7 +6,6 @@
 
 #ifndef PACK_HPP
 #define PACK_HPP
-#include "Item.hpp"
 #include <vector>
 
 class Pack
