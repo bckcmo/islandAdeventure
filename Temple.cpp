@@ -15,8 +15,12 @@ Temple::~Temple()
 
 Temple::Temple()
 {
-	name = "Temple";	
+	name = "Temple";
+	//doorOpen is used to indicate if the user has opened the temple door
+	//"false" indicates the door is closed
 	doorOpen = false;
+	//pouch is the item at this space. It can only be collected once
+	//"true" indicates it has not been collected
 	pouch = true;
 	move = ' ';
 }
@@ -59,10 +63,11 @@ Space* Temple::spaceInfo(Player* player)
 			std::cout << "The door is open. And you can see straight thru the temple." << std::endl;
 			std::cout << "On the other side is a path that leads to another beach." << std::endl;
 			std::cout << "Would you like to walk through the door and down to the beach?" << std::endl;
-			std::cout << "Enter 'y' for yes." << std::endl;
-			if(getChar() == 'y')
+			if(getYorN() == 'y')
 			{
+				//update player's stats
 				player->update();
+				//return pointer to Wbeach object
 				return spaces[3];
 			}
 		}
@@ -76,16 +81,15 @@ Space* Temple::spaceInfo(Player* player)
 			std::cout << "Hidden up agains the wall, you notice a leather pouch." << std::endl;
 			std::cout << "You look inside and there appears to be some sort of grey powder." << std::endl;
 			std::cout << "Would you like to pick up the pouch and put it in your backpack?" << std::endl;
-			std::cout << "Enter 'y' for yes." << std::endl;
-			if(getChar() == 'y')
+			if(getYorN() == 'y')
 			{
-				if(player->packIsFull())
+				if(player->isPackFull())
 				{
 					std::cout << std::endl;
 					std::cout << "You don't have room in your pack." << std::endl;
 					std::cout << "Would you like to remove an item to make room?" << std::endl; 
 					std::cout << "Enter 'y' for yes." << std::endl;
-					if(getChar() == 'y')
+					if(getYorN() == 'y')
 					{
 						player->removeItem();
 						player->addItem("leather pouch");
@@ -122,9 +126,8 @@ Space* Temple::spaceInfo(Player* player)
 			std::cout << "You are walking along the wall on the north side of the temple." << std::endl;
 			std::cout << "You notice a round indention in the wall." << std::endl;
 			std::cout << "The indention is surrounded by elaborate carvings." << std::endl;
-			std::cout << "Maybe something in your pack would fit in the indention. Do you want to see?" << std::endl;
-			std::cout << "Enter 'y' to check your pack." << std::endl;
-			if(getChar() == 'y')
+			std::cout << "Maybe something in your pack would fit in the indention. Do you want to check?" << std::endl;
+			if(getYorN() == 'y')
 			{
 				if(player->checkItems("engraved stone"))
 				{
@@ -133,8 +136,7 @@ Space* Temple::spaceInfo(Player* player)
 					std::cout << "It looks like it will fit in the indention." << std::endl;
 					std::cout << "The engravings on the stone are similar to the ones on the wall." << std::endl;
 					std::cout << "Do you want to try inserting the stone in the indention?" << std::endl;
-					std::cout << "Enter 'y' for yes." << std::endl;
-					if(getChar() == 'y')
+					if(getYorN() == 'y')
 					{
 						std::cout << std::endl;
 						player->deleteItem("engraved stone");
@@ -175,6 +177,7 @@ Space* Temple::spaceInfo(Player* player)
 	else
 	{
 		player->update();
+		//return pointer to Forest object
 		return spaces[2];		
 	}
 	

@@ -46,22 +46,27 @@ Space* Forest::spaceInfo(Player* player)
 	
 	if(move == 'd')
 	{
+		//update player's stats
 		player->update();
+		//return pointer to Sbeach object
 		return spaces[1];
 	}
 	else if(move == 'r')
 	{
 		player->update();
+		//return pointer to River object
 		return spaces[2];
 	}
 	else if(move == 'l')
 	{
 		player->update();
+		//return pointer to Temple object
 		return spaces[3];
 	}
 	else
 	{
 		player->update();
+		//return pointer to Nbeach object
 		return spaces[0];
 	}
 	

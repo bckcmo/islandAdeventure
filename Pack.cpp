@@ -16,6 +16,7 @@ Pack::Pack()
 	items.push_back("match box");
 }
 
+//prints the "items" vector
 void Pack::printContents()
 {
 	std::cout << std::endl;
@@ -26,6 +27,7 @@ void Pack::printContents()
 	}
 }
 
+//check the "items" vector for a specific item
 bool Pack::checkItems(std::string check)
 {
 	bool present = false;
@@ -41,7 +43,7 @@ bool Pack::checkItems(std::string check)
 	return present;
 }
 
-int Pack::getCapacity()
+int Pack::getNumItems()
 {
 	return items.size();
 }
@@ -58,17 +60,28 @@ bool Pack::isFull()
 	}
 }
 
+std::string Pack::getItem(int i)
+{
+	return items.at(i);
+}
+
+void Pack::add(std::string i)
+{
+	items.push_back(i);
+}
+
+/*
+*discard and deleteItem are provide different uses, but the result is the same - an item is deleted from the "items" vector
+*discard  takes an int and deletes the value based off it's index in the vector
+*deleteItem takes a string and deletes the item by name
+*/
+
 std::string Pack::discard(int i)
 {
 	std::cout << "You have removed the " << items.at(i) << " from your pack." << std::endl;
 	std::string item = items.at(i);
 	items.erase(items.begin() + i);
 	return item;
-}
-
-void Pack::add(std::string i)
-{
-	items.push_back(i);
 }
 
 void Pack::deleteItem(std::string item)
@@ -83,7 +96,3 @@ void Pack::deleteItem(std::string item)
 	}
 }
 
-std::string Pack::getItem(int i)
-{
-	return items.at(i);
-}

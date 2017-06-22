@@ -17,8 +17,11 @@ Sbeach::~Sbeach()
 
 Sbeach::Sbeach()
 {
-	name = "South Beach";	
+	name = "South Beach";
+	//numFish is used to keep track of the number of fish	
 	numFish = 2;
+	//stone is the item at this space. It can only be collected once
+	//"true" indicates it has not been collected
 	stone = true;
 	move = ' ';
 }
@@ -58,16 +61,13 @@ Space* Sbeach:: spaceInfo(Player* player)
 			std::cout << "If you catch a fish, you can use one of your matches to" << std::endl;
 			std::cout << "start a fire and cook the fish." << std::endl;
 			std::cout << "Cooked fish is delicious and it will replinish all of your strength points." << std::endl;
-			std::cout << "Do you want to try and catch a fish? Enter 'y' for yes." << std::endl;
-			char catchFish = getChar();
-			if(catchFish == 'y')
+			std::cout << "Do you want to try and catch a fish?" << std::endl; 
+			if(getYorN() == 'y')
 			{
 				numFish--;
 				std::cout << std::endl;
-				std::cout << "You caught a fish! Do you want to use a match to start a fire and cook the fish?"
-							   << "Enter 'y' for yes." << std::endl;
-				char useMatch = getChar();
-				if(useMatch == 'y')
+				std::cout << "You caught a fish! Do you want to use a match to start a fire and cook the fish?" << std::endl;
+				if(getYorN() == 'y')
 				{
 					if(player->checkItems("match box"))
 					{
@@ -113,17 +113,14 @@ Space* Sbeach:: spaceInfo(Player* player)
 			std::cout << "You are climbing on the boulders and you see an odd looking stone." << std::endl;
 			std::cout << "The stone is round and has decorative engravings all around it." << std::endl;
 			std::cout << "Would you like to pick up the stone and put it in your backpack?" << std::endl;
-			std::cout << "Enter 'y' for yes." << std::endl;
-			char pickUp = getChar();
-			if(pickUp == 'y')
+			if(getYorN()  == 'y')
 			{
-				if(player->packIsFull())
+				if(player->isPackFull())
 				{
 					std::cout << std::endl;
 					std::cout << "You don't have room in your pack." << std::endl;
 					std::cout << "Would you like to remove an item to make room?" << std::endl; 
-					std::cout << "Enter 'y' for yes." << std::endl;
-					if(getChar() == 'y')
+					if(getYorN()  == 'y')
 					{
 						player->removeItem();
 						player->addItem("engraved stone");
@@ -162,10 +159,13 @@ Space* Sbeach:: spaceInfo(Player* player)
 	}
 	else if(move == 'u')
 	{
+		//update player's stats
 		player->update();
+		//return pointer to Forest object
 		return spaces[0];
 	}
 	
+	//player is staying in the sBeach object, return this object
 	return this;
 }
 

@@ -33,6 +33,7 @@ int main(void)
 	
 	char menuReturn = menu();
 	
+	//repeat until user quits game: create game object, call play
 	while(menuReturn != 'q')
 	{
 		Game game;

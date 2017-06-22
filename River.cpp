@@ -17,6 +17,8 @@ River::River()
 {
 	name = "River";	
 	gun = true;
+	//gun is the item at this space. It can only be collected once
+	//"true" indicates it has not been collected
 	move = ' ';
 }
 
@@ -50,8 +52,7 @@ Space* River::spaceInfo(Player* player)
 		std::cout <<std::endl;
 		std::cout << "The water from the spring is cold and fresh." << std::endl;
 		std::cout << "It looks safe to drink. Do you want to refill your canteen?" << std::endl;
-		std::cout << "Enter 'y' for yes." << std::endl;
-		if(getChar() == 'y')
+		if(getYorN() == 'y')
 		{
 			if(player->checkItems("canteen"))
 			{
@@ -75,16 +76,14 @@ Space* River::spaceInfo(Player* player)
 			std::cout << "You've walked as close to the mountains as you can get." << std::endl;
 			std::cout << "While looking at the ground, you see a handgun." << std::endl;
 			std::cout << "Would you like to pick up the gun and put it in your backpack?" << std::endl;
-			std::cout << "Enter 'y' for yes." << std::endl;
-			if(getChar() == 'y')
+			if(getYorN() == 'y')
 			{
-				if(player->packIsFull())
+				if(player->isPackFull())
 				{
 					std::cout << std::endl;
 					std::cout << "You don't have room in your pack." << std::endl;
 					std::cout << "Would you like to remove an item to make room?" << std::endl; 
-					std::cout << "Enter 'y' for yes." << std::endl;
-					if(getChar() == 'y')
+					if(getYorN() == 'y')
 					{
 						player->removeItem();
 						player->addItem("gun");
@@ -124,7 +123,9 @@ Space* River::spaceInfo(Player* player)
 	}
 	else if(move == 'd')
 	{
+		//update player's stats
 		player->update();
+		//return pointer to Forest object
 		return spaces[2];
 	}
 	

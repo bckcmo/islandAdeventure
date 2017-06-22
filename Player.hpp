@@ -8,6 +8,7 @@
 #define PLAYER_HPP
 #include "Pack.hpp"
 #include "getChar.hpp"
+#include "getYorN.hpp"
 
 class Player
 {
@@ -23,7 +24,7 @@ public:
 	void refillWater();
 	void printInfo();
 	bool checkItems(std::string check);
-	bool packIsFull();
+	bool isPackFull();
 	void removeItem();
 	void deleteItem(std::string i);
 	void addItem(std::string item);

@@ -18,7 +18,10 @@ Wbeach::~Wbeach()
 Wbeach::Wbeach()
 {
 	name = "West Beach";
+	//bottle is the item at this space. It can only be collected once
+	//"true" indicates it has not been collected
 	bottle = true;	
+	//firstEncounter inidicates if user has interacted with the men on the beach
 	firstEncounter = true;
 	move = ' ';
 	srand (time(NULL));
@@ -146,17 +149,15 @@ Space* Wbeach:: spaceInfo(Player* player)
 			std::cout << "You are inspecting them to see if it would be wise to climb on them." << std::endl;
 			std::cout << "As you are looking, you notice a glass bottle wedged between some rocks." << std::endl;
 			std::cout << "Would you like to pick up the bottle and put it in your backpack?" << std::endl;
-			std::cout << "Enter 'y' for yes." << std::endl;
-			char pickUp = getChar();
-			if(pickUp == 'y')
+			if(getYorN() == 'y')
 			{
-				if(player->packIsFull())
+				if(player->isPackFull())
 				{
 					std::cout << std::endl;
 					std::cout << "You don't have room in your pack." << std::endl;
 					std::cout << "Would you like to remove an item to make room?" << std::endl; 
 					std::cout << "Enter 'y' for yes." << std::endl;
-					if(getChar() == 'y')
+					if(getYorN() == 'y')
 					{
 						player->removeItem();
 						player->addItem("glass bottle");
@@ -195,7 +196,9 @@ Space* Wbeach:: spaceInfo(Player* player)
 	}
 	else
 	{
+		//update player stats
 		player->update();
+		//return pointer to Temple object
 		return spaces[2];
 	}
 	

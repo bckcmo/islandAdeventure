@@ -30,7 +30,6 @@ public:
 	Game();
 	~Game();
 	int play();
-	void setSpace();
 	void initSpaces();
 };
 

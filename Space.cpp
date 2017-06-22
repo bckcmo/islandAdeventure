@@ -17,6 +17,8 @@ std::string Space::getSpaceName()
 	return name;
 }
 
+//this function initializes the pointers that point to other space objects
+//these pointers are what allow the player to move from space to space
 void Space::initPtrs(Space* up, Space* down, Space* right, Space* left)
 {
 	spaces[0] = up;

@@ -18,7 +18,7 @@ private:
 public:
 	Pack();
 	void printContents();
-	int getCapacity();
+	int getNumItems();
 	std::string getItem(int);
 	bool isFull();
 	bool checkItems(std::string check);

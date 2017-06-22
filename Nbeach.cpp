@@ -18,7 +18,10 @@ Nbeach::~Nbeach()
 Nbeach::Nbeach()
 {
 	name = "North Beach";
+	//numFish keeps track of the number of fish in this object
 	numFish = 2;
+	//disc is the item at this space. It can only be collected once
+	//"true" indicates it has not been collected
 	disc = true;	
 	move = ' ';
 }
@@ -63,15 +66,13 @@ Space* Nbeach:: spaceInfo(Player* player)
 			{
 				std::cout <<  std::endl;
 				std::cout << "You have a gun in your pack. Would you like to use it?" << std::endl;
-				std::cout << "Enter 'y' for yes." << std::endl;
-				if(getChar() == 'y')
+				if(getYorN() == 'y')
 				{
 					std::cout << std::endl;
 					std::cout << '\a' << std::endl;
 					std::cout << "You shot the gun and hit a fish!." << std::endl;
 					std::cout << "Do you want to use a match to start a fire and cook the fish?" << std::endl;
-					std::cout << "Enter 'y' for yes." << std::endl;
-					if(getChar() == 'y')
+					if(getYorN() == 'y')
 					{
 						if(player->checkItems("match box"))
 						{
@@ -121,16 +122,14 @@ Space* Nbeach:: spaceInfo(Player* player)
 			std::cout << "You are climbing on the boulders and you see something shiny." << std::endl;
 			std::cout << "You pick it up. It's a gold a silver disc covered in hieroglyphic writing." << std::endl;
 			std::cout << "Would you like to put the disc in your backpack?" << std::endl;
-			std::cout << "Enter 'y' for yes." << std::endl;
-			if(getChar() == 'y')
+			if(getYorN() == 'y')
 			{
-				if(player->packIsFull())
+				if(player->isPackFull())
 				{
 					std::cout << std::endl;
 					std::cout << "You don't have room in your pack." << std::endl;
 					std::cout << "Would you like to remove an item to make room?" << std::endl; 
-					std::cout << "Enter 'y' for yes." << std::endl;
-					if(getChar() == 'y')
+					if(getYorN() == 'y')
 					{
 						player->removeItem();
 						player->addItem("gold and silver disc");
@@ -169,7 +168,9 @@ Space* Nbeach:: spaceInfo(Player* player)
 	}
 	else
 	{
+		//update player's stats
 		player->update();
+		//return pointer to Forest object
 		return spaces[1];
 	}
 	
